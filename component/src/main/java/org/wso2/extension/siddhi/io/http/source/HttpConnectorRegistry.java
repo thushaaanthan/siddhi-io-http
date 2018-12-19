@@ -181,11 +181,6 @@ class HttpConnectorRegistry {
     protected void clearBootstrapConfigIfLast() {
         synchronized (this) {
             if ((this.sourceListenersMap.isEmpty()) && (httpConnectorFactory != null)) {
-                try {
-                    httpConnectorFactory.shutdown();
-                } catch (InterruptedException e) {
-                    log.error("Failed to shutdown http connector factory when removing last HTTP source.");
-                }
                 this.httpConnectorFactory = null;
             }
         }
